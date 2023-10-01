@@ -1,10 +1,29 @@
 import React, { useState } from 'react'
-import { FaBars, FaTimes } from 'react-icons/fa'
 
 import { Link } from 'react-scroll'
 const NavBar = () => {
     const [navButton, setNavButton] = useState(false)
-
+    
+    const social_info = [
+        {
+            id: 1,
+            title: "PDF",
+            link: "https://arxiv.org/pdf/2309.14303.pdf",
+            icon: "fas fa-file-pdf"
+        },
+        {
+            id: 2,
+            title: "arXiv",
+            link: "https://arxiv.org/abs/2309.14303",
+            icon: "ai ai-arxiv"
+        },
+        {
+            id: 1,
+            title: "Github",
+            link: "https://arxiv.org/pdf/2309.14303.pdf",
+            icon: "fab fa-github"
+        },
+    ]
     const links = [
         {
             id: 1,
@@ -27,38 +46,72 @@ const NavBar = () => {
     const authors = [
         {
             id: 1,
-            name: "Nguyen Ho Quang",
-            link: "https://github.com/quang-ngh"
+            name: "Quang Nguyen",
+            link: "https://quang-ngh.github.io",
+            affi: "1,2"
         },
-
+        {
+            id: 2,
+            name: "Truong Vu",
+            link: "https://github.com/quang-ngh",
+            affi: "1"
+        },
+        
+        {
+            id: 3,
+            name: "Anh Tran",
+            link: "https://github.com/quang-ngh",
+            affi: "1"
+        },
+        {
+            id: 4,
+            name: "Khoi Nguyen",
+            link: "https://github.com/quang-ngh",
+            affi: "1"
+        },
     ];
     return (
         <div className='container navbar'>
             <div className='navbar'>
                 <div>
-                    <h1 className='nav-title'>Anti-DreamBooth: Protecting Users from Personalized Text-to-Image Synthesis</h1>
+                    <h1 className='nav-title'>Dataset Diffusion: Diffusion-based Synthetic Dataset Generation for Pixel-Level Semantic Segmentation</h1>
                 </div>
                 <p className="nav-authors">
-                    {authors.map(({ id, name, link }) => (
+                    {authors.map(({ id, name, link, affi}) => (
                         <li key={id} >
-                            <a href={link} >{name}</a>
+                            <a href={link}>{name}<sup>{affi}</sup></a>
                         </li>
                     ))}
                 </p>
                 <p className="nav-authors">
-                    <li id="enterprise"><a href="https://www.vinai.io/">VinAI Research</a></li>
+                    <li id="enterprise"><a href="https://www.vinai.io/"><sup>1</sup>VinAI Research</a></li>
+                    <li id="enterprise"><a href="https://oisp.hcmut.edu.vn/en/"><sup>2</sup>Ho Chi Minh City University of Technology</a></li>
                 </p>
                 <div>
-                    <h1 className='nav-title'>ICCV-2023</h1>
+                    <h3 className='nav-title'>NeurIPS2023</h3>
                 </div>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuQxeRgrOSr8WxQI3jrPQh6lshkj0CAATCI4Vn-5BXgHA4xL6HcKIMsBo2I4K-3CmMH-Q&usqp=CAU" ></img>
-                <ul className='nav-option'>
+                <ul className='social-link'>
+                    {social_info.map(({ id, title, link, icon}) => (
+                        <li key={id} className='social-content'>
+                            <a href = {link}>
+                               <span class = "icon">
+                                    <i class = {icon}></i>
+                                </span> 
+                                <span>{title}</span>
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+                <video className="video-teaser" autoplay muted loop playsInline height="100%">
+                    <source src = "/home/quangngcs/Gituhb/base_report/assets/dd.mp4" type="video/mp4"></source>
+                </video>
+                {/* <ul className='nav-option'>
                     {links.map(({ id, title }) => (
                         <li key={id} className='px-4 cursor-pointer capitalize font-medium text-gray-400 hover:scale-125 duration-300 '>
                             <Link to={title} smooth duration={500}>{title}</Link>
                         </li>
                     ))}
-                </ul>
+                </ul> */}
 
             </div>
         </div>

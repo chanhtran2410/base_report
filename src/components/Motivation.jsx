@@ -1,11 +1,12 @@
 import React from 'react'
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+var Latex = require('react-latex');
 
 const contentStyle = {
   height: '160px',
   lineHeight: '160px',
-  textAlign: 'center',
+  textAlign: 'justify',
   background: '#364d79',
 };
 
@@ -14,24 +15,35 @@ const Motivation = () => {
   const contents = [
     {
       id: 1,
-      content: "Text-to-image diffusion models are nothing but a revolution, allowing anyone, even without design skills, to create realistic images from simple text inputs. With powerful personalization tools like DreamBooth, they can generate images of a specific person just by learning from his/her few reference images. However, when misused, such a powerful and convenient tool can produce fake news or disturbing content targeting any individual victim, posing a severe negative social impact. In this paper, we explore a defense system called Anti-DreamBooth against such malicious use of DreamBooth. The system aims to add subtle noise perturbation to each user's image before publishing in order to disrupt the generation quality of any DreamBooth model trained on these perturbed images. We investigate a wide range of algorithms for perturbation optimization and extensively evaluate them on two facial datasets over various text-to-image model versions. Despite the complicated formulation of DreamBooth and Diffusion-based text-to-image models, our methods effectively defend users from the malicious use of those models. Their effectiveness withstands even adverse conditions, such as model or prompt/term mismatching between training and testing.",
+      content: 
+      `
+        Semantic segmentation is a fundamental task in computer vision. 
+        Its objective is to assign semantic labels to each pixel in an image, making it crucial for 
+        applications such as autonomous driving, scene comprehension, and object recognition. 
+        However, one of the primary challenges in semantic segmentation is the high cost associated with manual annotation.
+         Annotating large-scale datasets with pixel-level labels is labor-intensive, time-consuming, and requires substantial 
+         human effort. To address this challenge, an alternative strategy involves leveraging generative models to synthesize
+          datasets with pixel-level labels. Past research efforts have utilized Generative Adversarial Networks (GANs) to effectively
+           generate synthetic datasets for semantic segmentation, thereby mitigating the reliance on manual annotation $\\href{https://quang-ngh.github.io}{DatasetGAN}$.
+            Meanwhile, recent text-to-image diffusion models have emerged as a promising direction for controllable generation
+             of realistic images. Harnessing such advances to automate the creation of semantic segmentation datasets could 
+             provide a vital breakthrough.
+      `,
+      title: "Motivation"
+      ,
       link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuQxeRgrOSr8WxQI3jrPQh6lshkj0CAATCI4Vn-5BXgHA4xL6HcKIMsBo2I4K-3CmMH-Q&usqp=CAU",
     },
     {
       id: 2,
-      content: "Text-to-image diffusion models are nothing but a revolution, allowing anyone, even without design skills, to create realistic images from simple text inputs. With powerful personalization tools like DreamBooth, they can generate images of a specific person just by learning from his/her few reference images. However, when misused, such a powerful and convenient tool can produce fake news or disturbing content targeting any individual victim, posing a severe negative social impact. In this paper, we explore a defense system called Anti-DreamBooth against such malicious use of DreamBooth. The system aims to add subtle noise perturbation to each user's image before publishing in order to disrupt the generation quality of any DreamBooth model trained on these perturbed images. We investigate a wide range of algorithms for perturbation optimization and extensively evaluate them on two facial datasets over various text-to-image model versions. Despite the complicated formulation of DreamBooth and Diffusion-based text-to-image models, our methods effectively defend users from the malicious use of those models. Their effectiveness withstands even adverse conditions, such as model or prompt/term mismatching between training and testing.",
-      carousel: [
-        {
-          id: 1,
-          link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuQxeRgrOSr8WxQI3jrPQh6lshkj0CAATCI4Vn-5BXgHA4xL6HcKIMsBo2I4K-3CmMH-Q&usqp=CAU",
-          label: "label"
-        },
-        {
-          id: 2,
-          link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuQxeRgrOSr8WxQI3jrPQh6lshkj0CAATCI4Vn-5BXgHA4xL6HcKIMsBo2I4K-3CmMH-Q&usqp=CAU",
-          label: "label 2"
-        }
-      ]
+      content: 
+      `
+     Our objective is to generate a synthetic dataset $D = (I_i, S_i)^{N}_{i=1}$, consisting of
+      high-fidelity images $I$ and pixel-level semantic masks $S$. These images and masks capture both the
+      semantic and location information of the target classes $C = {c_1, c_2, ..., c_K}$, where $K$ represents
+      the number of classes. The purpose of constructing this dataset is to train a semantic segmenter Φ
+      without relying on human annotation. 
+      `,
+      title: "Problem setting"
     },
 
   ];
@@ -39,33 +51,32 @@ const Motivation = () => {
     <div name="Section 2" className='container'>
       <div className='motivation'>
         <div>
-          <h1 className='title'>Motivation</h1>
+          <h1 className='title'>Introduction</h1>
         </div>
-        {contents.map(({ id, content, link, carousel }) => (
-          <div className='content-div'>
-            <p key={id} className="content">
-              {content}
-            </p>
-            {link ? <img src={link} alt="" /> : <br />}
-
-            <div className='carousel'>
-              {carousel ? (
-                <Carousel>
-                  {carousel.map(({ id, link, label }) => ( // Added 'id' to the carousel map function
-                    <div key={id}> {/* Added key prop */}
-                      <img src={link} />
-                      <p className="legend">{label}</p>
-                    </div>
-                  ))}
-                </Carousel>
-              ) : (
-                <br />
-              )}
+        {contents.map(({ id, content, link, carousel, title}) => (
+          <>
+            <div className="inner-title">
+              <h2>{title}</h2>
             </div>
-          </div>
+            <div className='content-div'>
+              <p key={id} className="content">
+                <Latex>
+                  {content}
+                </Latex>    
+              </p>
+              {/* {link ? <img src={link} alt="" /> : <br />} */}
+            </div>
+          </>
         ))}
       </div>
-      {/* <Carousel>
+      
+    </div>
+
+  )
+}
+
+export default Motivation
+{/* <Carousel>
         <div>
           <img src="assets/1.jpeg" />
           <p className="legend">Legend 1</p>
@@ -78,10 +89,4 @@ const Motivation = () => {
           <img src="assets/3.jpeg" />
           <p className="legend">Legend 3</p>
         </div>
-      </Carousel> */}
-    </div>
-
-  )
-}
-
-export default Motivation
+</Carousel> */}

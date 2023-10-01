@@ -4,13 +4,23 @@ const Abstract = () => {
     const contents = [
         {
             id: 1,
-            content: "Text-to-image diffusion models are nothing but a revolution, allowing anyone, even without design skills, to create realistic images from simple text inputs. With powerful personalization tools like DreamBooth, they can generate images of a specific person just by learning from his/her few reference images. However, when misused, such a powerful and convenient tool can produce fake news or disturbing content targeting any individual victim, posing a severe negative social impact. In this paper, we explore a defense system called Anti-DreamBooth against such malicious use of DreamBooth. The system aims to add subtle noise perturbation to each user's image before publishing in order to disrupt the generation quality of any DreamBooth model trained on these perturbed images. We investigate a wide range of algorithms for perturbation optimization and extensively evaluate them on two facial datasets over various text-to-image model versions. Despite the complicated formulation of DreamBooth and Diffusion-based text-to-image models, our methods effectively defend users from the malicious use of those models. Their effectiveness withstands even adverse conditions, such as model or prompt/term mismatching between training and testing.",
+            content: 
+            `
+            Preparing training data for deep vision models is a labor-intensive task. To address this, generative models have emerged as an effective solution for generating
+            synthetic data. While current generative models produce image-level category
+            labels, we propose a novel method for generating pixel-level semantic segmentation labels using the text-to-image generative model Stable Diffusion (SD). By
+            utilizing the text prompts, cross-attention, and self-attention of SD, we introduce
+            three new techniques: class-prompt appending, class-prompt cross-attention, and
+            self-attention exponentiation. These techniques enable us to generate segmentation
+            maps corresponding to synthetic images. These maps serve as pseudo-labels for
+            training semantic segmenters, eliminating the need for labor-intensive pixel-wise
+            annotation. To account for the imperfections in our pseudo-labels, we incorporate
+            uncertainty regions into the segmentation, allowing us to disregard loss from those
+            regions. We conduct evaluations on two datasets, PASCAL VOC and MSCOCO,
+            and our approach significantly outperforms concurrent work.
+            `
         },
-        {
-            id: 2,
-            content: "Text-to-image diffusion models are nothing but a revolution, allowing anyone, even without design skills, to create realistic images from simple text inputs. With powerful personalization tools like DreamBooth, they can generate images of a specific person just by learning from his/her few reference images. However, when misused, such a powerful and convenient tool can produce fake news or disturbing content targeting any individual victim, posing a severe negative social impact. In this paper, we explore a defense system called Anti-DreamBooth against such malicious use of DreamBooth. The system aims to add subtle noise perturbation to each user's image before publishing in order to disrupt the generation quality of any DreamBooth model trained on these perturbed images. We investigate a wide range of algorithms for perturbation optimization and extensively evaluate them on two facial datasets over various text-to-image model versions. Despite the complicated formulation of DreamBooth and Diffusion-based text-to-image models, our methods effectively defend users from the malicious use of those models. Their effectiveness withstands even adverse conditions, such as model or prompt/term mismatching between training and testing.",
-        },
-
+        
     ];
     const handleImageChange = (e) => {
         console.log(e.target.value)
@@ -27,7 +37,7 @@ const Abstract = () => {
                         {content}
                     </p>
                 ))}
-                <div className="slider">
+                {/* <div className="slider">
                     <div className="image-wrapper">
                         <img style={{ opacity: imageIndex === 0 ? 1 : 0 }} src="https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg" alt="sd" />
                         <img style={{ opacity: imageIndex === 1 ? 1 : 0 }} src="https://www.zdnet.com/a/img/resize/ba1b1ab92085d777ab5e313b34c66a94b7aa1236/2023/06/05/79a43eb8-ce38-488c-8cc0-e04699aaca7f/bing.jpg?auto=webp&width=1280" alt="sd" />
@@ -53,7 +63,7 @@ const Abstract = () => {
                         max="15"
                         onChange={handleImageChange}
                     />
-                </div>
+                </div> */}
             </div>
         </div>
 

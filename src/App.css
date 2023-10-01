@@ -4,8 +4,17 @@ img {
   border-radius: 15px;
 }
 
+.video-teaser {
+  width: 100%;
+  height: 50%;
+  border-radius: 10;
+
+}
+
 .mainboard {
-  margin: 15px 12em;
+  margin: 15px 20em;
+  /* margin: center; */
+  /* position: center; */
 }
 
 .container {
@@ -14,17 +23,26 @@ img {
   width: 65em;
   height: auto;
   border-radius: 15px;
-  box-shadow: 0px 0px 10px #999;
+  /* box-shadow: 0px 0px 10px #999; */
   margin: 1.5em 0;
-  padding: 1em 3em;
+  padding: 1em 1em;
 
 }
 
 .title {
-  text-align: center;
+  text-align: left;
   font-size: 35px;
-  font-weight: 300;
+  font-weight: bolder;
 }
+
+.abstract {
+  padding: 1em 7em;
+}
+.abstract .title {
+  text-align: center;
+}
+
+
 
 .carousel {
   width: 100%;
@@ -47,10 +65,31 @@ img {
 
 .content {
   font-size: 17px;
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 1.5;
 }
 
 
 /*NAVBAR SECTION*/
+.social-link {
+  /* text-align: center; */
+  font-size: 25px;
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+}
+
+.social-link .social-content {
+  text-align: center;
+  background-color: black;
+  color: white;
+  margin: 0 1em;
+  border-radius: 15px;
+  padding: .3em .2em;
+}
+
+
 .nav-title {
   text-align: center;
   font-size: 40px;
@@ -76,10 +115,16 @@ img {
 
 }
 
+.author-block {
+  display: inline-block;
+}
+
 .nav-authors {
+  color: hsl(204, 86%, 53%) !important;
   display: flex;
   justify-content: center;
   list-style-type: none;
+  font-family: 'Google Sans', sans-serif;
 
 }
 
@@ -106,11 +151,13 @@ img {
 .nav-authors a:hover:after {
   width: 100%;
   background-color: #224b8d;
+  
 }
 
 .nav-authors a:hover {
   width: 100%;
   color: #224b8d;
+  font-weight: bold;
 }
 
 .nav-authors #enterprise a {
@@ -127,7 +174,22 @@ img {
   transition: opacity .2s;
 }
 
-.slider .image-wrapper {
+/*  -- Bibtex -- */
+/* .bibtex {
+  margin: 0 1em;
+} */
+.bibtex-code {
+  font-family: monospace;
+  color: #4a4a4a;
+  line-height: 1.5;
+  font-weight: 300;
+  box-shadow: 1px 1px 0px 1px #fff;
+  background-color: #f5f5f5;
+  word-wrap: normal;
+  /* display: block; */
+  padding: 1.25em 1.5em;
+}
+/* .slider .image-wrapper {
   width: 1050px;
   height: 600px;
   position: relative;
@@ -136,4 +198,6 @@ img {
 .slider input[type="range"] {
   width: 500px;
   margin: 3em 250px;
-}
+} */
+
+/* new css for the front of page*/
