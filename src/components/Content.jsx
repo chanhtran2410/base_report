@@ -1,6 +1,5 @@
 import React from 'react'
 import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Fragment } from 'react';
 
 const contentStyle = {
@@ -41,7 +40,7 @@ const Content = () => {
             thereby enhancing their quality. Therefore, we propose self-attention exponentiation where the self-attention map  is powered to 
             a hyper-parameter before multiplying to the cross-attention map.
             `,
-            caption : '',
+            caption: '',
             figure_id: 0,
             title: "Utilizing the Self + Cross Attention Maps",
             tag: "attention",
@@ -73,31 +72,31 @@ const Content = () => {
                 <div>
                     <h1 className='title'>Methods</h1>
                 </div>
-                {contents.map(({ id, content, link, title, caption, figure_id, carousel}) => (
+                {contents.map(({ id, content, link, title, caption, figure_id, carousel }) => (
                     <>
                         <div>
-                            <h2 className = "inner-title">{title}</h2>
+                            <h2 className="inner-title">{title}</h2>
                         </div>
                         <div className='content-div'>
                             <p key={id} className="content">
                                 {content.split('\n\n').map((item, key) => (
                                     <Fragment key={key}>
-                                        {item}   
-                                    <br />
+                                        {item}
+                                        <br />
                                     </Fragment>
                                 ))}
-                            
-                            </p> 
-                            {link ? 
+
+                            </p>
+                            {link ?
                                 (
                                     <>
-                                        <img src={link} alt=""></img>
+                                        <img className='figure' src={link} alt=""></img>
                                         <div className='figure-caption'>Figure {figure_id}: {caption}</div>
                                     </>
-                                ) 
+                                )
                                 : (<br />)
                             }
-                            <div className='carousel'>
+                            <div className='.'>
                                 {carousel ? (
                                     <Carousel>
                                         {carousel.map(({ id, link, label }) => ( // Added 'id' to the carousel map function
@@ -110,14 +109,15 @@ const Content = () => {
                                 ) : (
                                     <br />
                                 )}
-                        </div>
+                            </div>
+
                         </div>
                     </>
                 ))}
-           </div>
+            </div>
         </div>
 
     )
 }
 
-export  default Content
+export default Content

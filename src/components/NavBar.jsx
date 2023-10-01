@@ -7,7 +7,7 @@ import video_src from '../assets/videos/Dataset-Diffusion.mp4';
 
 const NavBar = () => {
     const [navButton, setNavButton] = useState(false)
-    
+
     const social_info = [
         {
             id: 1,
@@ -60,7 +60,7 @@ const NavBar = () => {
             link: "https://github.com/quang-ngh",
             affi: "1"
         },
-        
+
         {
             id: 3,
             name: "Anh Tran",
@@ -81,7 +81,7 @@ const NavBar = () => {
                     <h1 className='nav-title'>Dataset Diffusion: Diffusion-based Synthetic Dataset Generation for Pixel-Level Semantic Segmentation</h1>
                 </div>
                 <p className="nav-authors">
-                    {authors.map(({ id, name, link, affi}) => (
+                    {authors.map(({ id, name, link, affi }) => (
                         <li key={id} >
                             <a href={link}>{name}<sup>{affi}</sup></a>
                         </li>
@@ -95,21 +95,21 @@ const NavBar = () => {
                     <h3 className='nav-title'>NeurIPS2023</h3>
                 </div>
                 <ul className='social-link'>
-                    {social_info.map(({ id, title, link, icon}) => (
+                    {social_info.map(({ id, title, link, icon }) => (
                         <li key={id} className='social-content'>
-                            <a href = {link}>
-                               <span class = "icon">
-                                    <i class = {icon}></i>
-                                </span> 
+                            <a href={link}>
+                                <span className="icon">
+                                    <i className={icon}></i>
+                                </span>
                                 <span>{title}</span>
                             </a>
                         </li>
                     ))}
                 </ul>
-                    <video className='video-teaser' autoplay='' loop muted controls>
-                        <source src={video_src} type="video/mp4" />
-                    </video> 
-                
+                <video className='video-teaser' autoplay='' loop muted controls>
+                    <source src={video_src} type="video/mp4" />
+                </video>
+
             </div>
         </div>
     )

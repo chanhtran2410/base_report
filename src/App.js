@@ -13,7 +13,7 @@ function App() {
       <NavBar />
       <Abstract />
       <Motivation />
-      <Content /> 
+      <Content />
       <Results />
       <Bibtex />
     </div>
