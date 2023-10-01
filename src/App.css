@@ -1,20 +1,24 @@
+a:link {
+  text-decoration: none;
+}
 img {
   width: 100%;
-  height: 50%;
-  border-radius: 15px;
+  height: 30%;
+  border-radius: 0px;
+}
+
+.figure-caption {
+    color: #999999;
 }
 
 .video-teaser {
   width: 100%;
   height: 50%;
-  border-radius: 10;
 
 }
 
 .mainboard {
   margin: 15px 20em;
-  /* margin: center; */
-  /* position: center; */
 }
 
 .container {
@@ -41,6 +45,7 @@ img {
 .abstract .title {
   text-align: center;
 }
+
 
 
 
@@ -200,4 +205,4 @@ img {
   margin: 3em 250px;
 } */
 
-/* new css for the front of page*/
+/* new css for the front of page*/ 

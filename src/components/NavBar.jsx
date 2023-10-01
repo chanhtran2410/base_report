@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 
 import { Link } from 'react-scroll'
+
+// const video_src = "../assets/Dataset-Diffusion.mp4";
+import video_src from '../assets/videos/Dataset-Diffusion.mp4';
+
 const NavBar = () => {
     const [navButton, setNavButton] = useState(false)
     
@@ -102,17 +106,10 @@ const NavBar = () => {
                         </li>
                     ))}
                 </ul>
-                <video className="video-teaser" autoplay muted loop playsInline height="100%">
-                    <source src = "/home/quangngcs/Gituhb/base_report/assets/dd.mp4" type="video/mp4"></source>
-                </video>
-                {/* <ul className='nav-option'>
-                    {links.map(({ id, title }) => (
-                        <li key={id} className='px-4 cursor-pointer capitalize font-medium text-gray-400 hover:scale-125 duration-300 '>
-                            <Link to={title} smooth duration={500}>{title}</Link>
-                        </li>
-                    ))}
-                </ul> */}
-
+                    <video className='video-teaser' autoplay='' loop muted controls>
+                        <source src={video_src} type="video/mp4" />
+                    </video> 
+                
             </div>
         </div>
     )

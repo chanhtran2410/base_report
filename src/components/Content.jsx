@@ -1,6 +1,7 @@
 import React from 'react'
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Fragment } from 'react';
 
 const contentStyle = {
     height: '160px',
@@ -13,30 +14,56 @@ const Content = () => {
     const contents = [
         {
             id: 1,
-            content: `Text-to-image diffusion models are nothing but a revolution, allowing anyone, even without design skills, 
-            to create realistic images from simple text inputs. With powerful personalization tools like DreamBooth, they can generate images of a specific person just by learning from his/her few reference images. However, when misused, such a powerful and convenient tool can produce fake news or disturbing content targeting any individual victim, posing a severe negative social impact. In this paper, we explore a defense system called Anti-DreamBooth against such malicious use of DreamBooth. The system aims to add subtle noise perturbation to each user's image before publishing in order to disrupt the generation quality of any DreamBooth model trained on these perturbed images. We investigate a wide range of algorithms for perturbation optimization and extensively evaluate them on two facial datasets over various text-to-image model versions. Despite the complicated formulation of DreamBooth and Diffusion-based text-to-image models, our methods effectively defend users from the malicious use of those models. 
-            Their effectiveness withstands even adverse conditions, such as model or prompt/term mismatching between training and testing.`,
-            link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuQxeRgrOSr8WxQI3jrPQh6lshkj0CAATCI4Vn-5BXgHA4xL6HcKIMsBo2I4K-3CmMH-Q&usqp=CAU",
-            title: "Prompting"
+            content: `We propose a class-prompt appending technique to improve the quality of text prompts for generating synthetic segmentation datasets. 
+            This involves taking the original image captions and appending the class labels for all objects present in the image. For example, an original caption like 
+            "a woman standing in a kitchen" would be modified to "a woman standing in a kitchen; person sink refrigerator oven cabinet". 
+            This ensures the text prompt covers all target classes in the dataset, even if the original caption missed some objects. 
+            Appending the class labels directly addresses issues of mismatch between caption terms and dataset classes, and missing classes in the captions. 
+            The improved prompts better guide the synthetic data generation process.`,
+            link: '/static/images/prompt_common_problem2-1.png',
+            caption: ` Common issues of using provided (or generated) captions. Red classes are often missing
+            from the captions, resulting in a lack of text prompts for those classes. Blue classes may have different
+            terms used in the captions, causing a discrepancy between the target class names and the text prompts.`,
+            figure_id: 1,
+            title: "Prompting",
+            tag: "prompt"
         },
         {
             id: 2,
-            content: `Text-to-image diffusion models are nothing but a revolution, allowing anyone, even without design skills, 
-            to create realistic images from simple text inputs. With powerful personalization tools like DreamBooth, they can generate images of a specific person just by learning from his/her few reference images. However, when misused, such a powerful and convenient tool can produce fake news or disturbing content targeting any individual victim, posing a severe negative social impact. In this paper, we explore a defense system called Anti-DreamBooth against such malicious use of DreamBooth. The system aims to add subtle noise perturbation to each user's image before publishing in order to disrupt the generation quality of any DreamBooth model trained on these perturbed images. We investigate a wide range of algorithms for perturbation optimization and extensively evaluate them on two facial datasets over various text-to-image model versions. Despite the complicated formulation of DreamBooth and Diffusion-based text-to-image models, our methods effectively defend users from the malicious use of those models. 
-            Their effectiveness withstands even adverse conditions, such as model or prompt/term mismatching between training and testing.`,
-            'title': "Mask Generation",
-            // carousel: [
-            //     {
-            //         id: 1,
-            //         link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuQxeRgrOSr8WxQI3jrPQh6lshkj0CAATCI4Vn-5BXgHA4xL6HcKIMsBo2I4K-3CmMH-Q&usqp=CAU",
-            //         label: "label"
-            //     },
-            //     {
-            //         id: 2,
-            //         link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuQxeRgrOSr8WxQI3jrPQh6lshkj0CAATCI4Vn-5BXgHA4xL6HcKIMsBo2I4K-3CmMH-Q&usqp=CAU",
-            //         label: "label 2"
-            //     }
-            // ]
+            content: `We introduce class-prompt cross-attention produced by only taking the softmax over the class name part rather than entire of the text 
+            prompt. In practice, we form a new text prompt that is the same as the class name, just for the purpose of extracting the cross-attention maps 
+            while the original text prompt for generating images keeps unchanged. After this process, we will obtain the cross-attention respect to the class
+            name.\n\n
+            Although the cross-attention maps already exhibit the location of the target classes in the image,
+            they are still coarse-grained and noisy. Thus, we propose to use the self-attention map 
+            to enhance the cross-attention maps for a more precise object location. This is because the self-attention maps capturing the pairwise correlations among positions within
+            the latent code can help propagate the initial cross-attention maps to the highly similar positions, e.g., non-salient parts of the object, 
+            thereby enhancing their quality. Therefore, we propose self-attention exponentiation where the self-attention map  is powered to 
+            a hyper-parameter before multiplying to the cross-attention map.
+            `,
+            caption : '',
+            figure_id: 0,
+            title: "Utilizing the Self + Cross Attention Maps",
+            tag: "attention",
+            carousel: [
+                {
+                    id: 2,
+                    link: '/static/images/self_attention6.png',
+                    label: "Correlation maps at some positions with others, extracted from a self-attention map"
+                },
+                {
+                    id: 3,
+                    link: '/static/images/self_attention.png',
+                    label: "Correlation maps at some positions with others, extracted from a self-attention map"
+                },
+                {
+                    id: 4,
+                    link: '/static/images/mask_generation.png',
+                    label: `Given a text prompt “A bike is parked in a room; bicycle”, we obtain the generated image, 
+                    cross-attention map, enhanced cross-attention map by the self-attention with different values of hyper-paramter 
+                    and mask with uncertainty value (white region)`
+                },
+            ]
         },
 
     ];
@@ -44,40 +71,53 @@ const Content = () => {
         <div name="Section 3" className='container'>
             <div className='content'>
                 <div>
-                    <h1 className='title'>Dataset Diffusion</h1>
+                    <h1 className='title'>Methods</h1>
                 </div>
-                {contents.map(({ id, content, link, carousel, title}) => (
+                {contents.map(({ id, content, link, title, caption, figure_id, carousel}) => (
                     <>
                         <div>
                             <h2 className = "inner-title">{title}</h2>
                         </div>
                         <div className='content-div'>
                             <p key={id} className="content">
-                                {content}
-                            </p>
+                                {content.split('\n\n').map((item, key) => (
+                                    <Fragment key={key}>
+                                        {item}   
+                                    <br />
+                                    </Fragment>
+                                ))}
                             
+                            </p> 
+                            {link ? 
+                                (
+                                    <>
+                                        <img src={link} alt=""></img>
+                                        <div className='figure-caption'>Figure {figure_id}: {caption}</div>
+                                    </>
+                                ) 
+                                : (<br />)
+                            }
+                            <div className='carousel'>
+                                {carousel ? (
+                                    <Carousel>
+                                        {carousel.map(({ id, link, label }) => ( // Added 'id' to the carousel map function
+                                            <div key={id}> {/* Added key prop */}
+                                                <img src={link} />
+                                                <p className="legend">{label}</p>
+                                            </div>
+                                        ))}
+                                    </Carousel>
+                                ) : (
+                                    <br />
+                                )}
+                        </div>
                         </div>
                     </>
                 ))}
-            </div>
+           </div>
         </div>
 
     )
 }
 
 export  default Content
-
-                        // <div className='carousel'>
-                        //     {carousel ? (
-                        //         <Carousel>
-                        //             {carousel.map(({ id, link, label }) => ( // Added 'id' to the carousel map function
-                        //                 <div key={id}> {/* Added key prop */}
-                        //                     <img src={link} />
-                        //                     <p className="legend">{label}</p>
-                        //                 </div>
-                        //             ))}
-                        //         </Carousel>
-                        //     ) : (
-                        //         <br />
-                        //     )}
-                        // </div>
