@@ -68,7 +68,7 @@ const Content = () => {
     ];
     return (
         <div name="Section 3" className='container'>
-            <div className='content'>
+            <div className='motivation'>
                 <div>
                     <h1 className='title'>Methods</h1>
                 </div>

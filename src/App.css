@@ -29,8 +29,8 @@ a:link {
 .container {
   display: flex;
   justify-content: center;
-  /* width: 65em; */
   height: auto;
+  width: auto;
   border-radius: 15px;
   /* box-shadow: 0px 0px 10px #999; */
   margin: 1.5em 0;
@@ -60,7 +60,7 @@ a:link {
 }
 
 .carousel .thumbs-wrapper {
-  display: flex;
+  display: none;
   justify-content: center;
 }
 
@@ -90,7 +90,7 @@ a:link {
 
 
 .abstract {
-  padding: 1em 7em;
+  width: 80%;
 }
 
 .abstract .title {
@@ -211,6 +211,10 @@ a:link {
 
 
 /*BIXTEX SECTION =======================================*/
+.bibtex {
+  width: 100%;
+}
+
 .bibtex-code {
   font-family: 'Consola Mono', sans-serif;
   color: #e83e8c;
@@ -221,7 +225,13 @@ a:link {
   word-wrap: normal;
   /* display: block; */
   padding: 1.25em 1.5em;
+  width: auto;
 }
+
+.bibtex-code pre {
+  text-wrap: wrap;
+}
+
 
 
 
@@ -258,12 +268,55 @@ a:link {
 }
 
 .slider-scroll .image-wrapper {
-  width: 1050px;
-  height: 600px;
+  width: 100%;
+  height: 500px;
   position: relative;
 }
 
 .slider-scroll input[type="range"] {
-  width: 500px;
-  margin: 3em 250px;
+  width: 100%;
+}
+
+
+
+@media only screen and (max-width: 1000px) {
+  .mainboard {
+    margin: 15px 0em;
+    width: 100vw;
+  }
+
+  .container {
+    padding: .5em .5em;
+  }
+
+  .social-link {
+    /* text-align: center; */
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    padding: 0;
+    width: 98%;
+  }
+
+  .social-link .social-content {
+    text-align: center;
+    width: 3em;
+    color: white;
+    border-radius: 20px;
+    padding: .2em 1.5em;
+  }
+
+  .nav-authors {
+    margin-left: 2em;
+  }
+
+  .slider-scroll .image-wrapper {
+    width: 100%;
+    height: 300px;
+    position: relative;
+  }
+
+  .bibtex-code {
+    padding: 1em;
+  }
 }
